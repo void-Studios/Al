@@ -82,15 +82,6 @@ def modules(module):
         print("Module not yet set. Please address Kaichou-sama with this.")
         return False
 
-
-
-
-
-
-
-
-
-
 if __name__ == "__main__":
     hello()
     idle()
