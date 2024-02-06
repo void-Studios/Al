@@ -1,4 +1,7 @@
+#!/usr/bin/env python3
+
 import requests
+import json
 import typer
 import inquirer
 from yaspin import yaspin
@@ -6,7 +9,7 @@ import pyfiglet
 import datetime
 from tabulate import tabulate
 
-API_KEY="XXXXXXXXXXXXXXXXXX"
+API_KEY="42c3cdf5ae2b1f81d78292c20b2eedf3"
 
 units = dict(
   metric="°C",
