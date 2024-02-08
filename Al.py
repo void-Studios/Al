@@ -29,25 +29,21 @@ def netscan():
     script_setup("python3","lan_scan/scan.py")
     
 def getSSHUser():
-    print(f"Hey {ssh_client}")
-    # if len(ssh_client) > 0:
-    #     client_ip = ssh_client.split()[0]
-    #     client_port = ssh_client.split()[-1]
-    #     client_string = f"[ {client_ip} : {client_port} ]"
-        
-        
-        
+    if ssh_client is None:
+      print(f"Hello, {user}! My name is Al. Pleased to meet you.")
+    
+    else:  
+      if len(ssh_client) > 0:
+          client_ip = ssh_client.split()[0]
+          client_port = ssh_client.split()[-1]
+          client_string = f"[ {client_ip} : {client_port} ]"
+              
     #     try:
     #         client_username= os.getenv('HOSTNAME')
     #         print(f"Hello {ssh_client}! Did you visit Elsweyr on your way here?")
     #     except socket.herror:
     #         print("Unable to resolve cliente username.")
     #         print(f"Hello {client_string}! Did you visit Elsweyr on your way here?")
-        
-        
-    # else:
-    #     print(f"Hello, {user}! My name is Al. Pleased to meet you.")
-
 
 def hello():
     os.system('clear')
