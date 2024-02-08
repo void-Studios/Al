@@ -37,13 +37,9 @@ def getSSHUser():
         client_port = ssh_client.split()[-1]
         client_string = f"[ {client_ip} : {client_port} ]"
         
-        print(f"Hey {ssh_client}! My name is Al. Pleased to meet you.")
+        print(f"Hey {client_string}! My name is Al. Pleased to meet you.")
     
-    # if len(ssh_client) > 0:
-    #     
-        
-        
-        
+    
     #     try:
     #         client_username= os.getenv('HOSTNAME')
     #         print(f"Hello {ssh_client}! Did you visit Elsweyr on your way here?")
