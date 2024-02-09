@@ -11,7 +11,6 @@ from tabulate import tabulate
 import configparser
 import os
 
-
 ini = os.path.join(os.path.dirname(__file__),"program_data","api.ini")
 config = configparser.ConfigParser()
 config.read(ini)
