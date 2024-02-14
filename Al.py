@@ -1,24 +1,25 @@
 #!/usr/bin/env python3
 import socket
-import os
+import platform
 import sys
 import subprocess
 from datetime import datetime
+import os
 
 #IMPORTING MODULES
 from modules import netscan
-os.system('clear')
+os.system('cls' if platform.system()== 'Windows' else 'clear')
 # Global variables
-user = os.getenv('USER')
-ssh_client = os.getenv('SSH_CLIENT')
-system_info = os.uname()
+user = platform.getenv('USER')
+ssh_client = platform.getenv('SSH_CLIENT')
+system_info = platform.uname()
 date_current = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-modules_directory = os.path.join(os.path.dirname(__file__),"modules")
+modules_directory = platform.path.join(platform.path.dirname(__file__),"modules")
 isStandby=True
 
 def script_setup(language,script_name):
-    script_path = os.path.join(modules_directory,script_name)
-    if os.path.isfile(script_path):
+    script_path = platform.path.join(modules_directory,script_name)
+    if platform.path.isfile(script_path):
         subprocess.run([language,script_path])
     else:
         print(f"Error: {script_path} not found.")
@@ -56,10 +57,10 @@ def help():
     print("netscan\nclear\nhello")
     print("Help to get to this message.")
     print("|_")
-    isStandby = modules(input("Which option do you choose?"))
+    isStandby = modules(input("Which option do you choplatforme?"))
 
 def clear_screen():
-    os.system('clear')
+    platform.system('cls' if os.name=='nt' else 'clear')
 
 def idle():
     global isStandby
