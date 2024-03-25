@@ -1,0 +1,35 @@
+{
+    "gemini": {
+    "url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=AIzaSyAtpgcaVEjuWxsNQks0Y7mMaep5m9zNiv0",
+    "key": "AIzaSyAtpgcaVEjuWxsNQks0Y7mMaep5m9zNiv0",
+    "json": true,
+    "requestType": "POST",
+    "headers": {}
+    },
+    "localhost": {
+      "url": "http://192.168.1.42:11434/api/generate",
+      "key": false,
+      "json": true,
+      "requestType": "POST",
+      "headers": {"Content-Type":"application/json"}
+    },
+    "dogpics": {
+      "url": "https://dog.ceo/api/breeds/image/random",
+      "key": false,
+      "json": false,
+      "requestType": "GET",
+      "headers": false,
+      "is_random": true,
+      "returns_list":true
+    },
+    "pokeapi": {
+      "url": "https://pokeapi.co/api/v2/",
+      "key": false,
+      "json": false,
+      "requestType": "GET",
+      "headers": {},
+      "is_random": true,
+      "returns_list":true
+
+    }
+  }
