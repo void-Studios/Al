@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
 
+#AL MODULES IMPORT
+from modules import morse_code_alert
+
+
+
 import requests
 import json
 import typer
@@ -39,62 +44,24 @@ APIKEYS={}
 for key in config_values['api_keys']:
   APIKEYS[key]=config_values['api_keys'][key]
 
-
-def post_to_API(query,API):
-  
-  pass
-
-def fetchToAPI(query,API):
-  api_url = APIS[API]
-  api_key = APIKEYS[API]
-    
-  if api_key is None or api_key == '':
-    api_key=None
+def fetchToAPI(query,apiurl,apikey=None):
 
   headers = {
     'Content-Type':'application/json',
     }
   
-
-  json_data = {
-      'prompt': query,
-      'stop': [],
-      'llm_config': {
-          'max_new_tokens': 128,
-          'min_length': 0,
-          'early_stopping': False,
-          'num_beams': 1,
-          'num_beam_groups': 1,
-          'use_cache': True,
-          'temperature': 0.75,
-          'top_k': 15,
-          'top_p': 0.78,
-          'typical_p': 1,
-          'epsilon_cutoff': 0,
-          'eta_cutoff': 0,
-          'diversity_penalty': 0,
-          'repetition_penalty': 1,
-          'encoder_repetition_penalty': 1,
-          'length_penalty': 1,
-          'no_repeat_ngram_size': 0,
-          'renormalize_logits': False,
-          'remove_invalid_values': False,
-          'num_return_sequences': 1,
-          'output_attentions': False,
-          'output_hidden_states': False,
-          'output_scores': False,
-          'encoder_no_repeat_ngram_size': 0,
-          'n': 1,
-          'presence_penalty': 0,
-          'frequency_penalty': 0,
-          'use_beam_search': False,
-          'ignore_eos': False,
-          'skip_special_tokens': True,
-      },
-      'adapter_name': None,
+  json_data= {
+    "model": "mistral",
+    "prompt": query,
+    "stream": False,
+    "format": "json"
   }
-
-  response=requests.post(apiurl,headers=headers,json=json_data)
+  
+# 
+# response = requests.post('http://localhost:3000/v1/generate', headers=headers, json=json_data)
+  
+  
+  response=requests.request("POST",apiurl,headers=headers,json=json_data)
   return response
   
 
@@ -104,13 +71,15 @@ def main():
 
     print(API)
     
+    if api_key is None or api_key == '':
+      api_key=None
     
     query = input("How may I help you today?\n>>>")
     if query.lower()=='exit':
       break
     
     
-    responseData=fetchToAPI(query,API)
+    responseData=fetchToAPI(query,api_url,api_key)
     
     if responseData.status_code == 200:
         print('POST request was successful!')
