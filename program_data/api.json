@@ -7,7 +7,7 @@
     "headers": {}
     },
     "localhost": {
-      "url": "http://localhost:3000/v1/generate",
+      "url": "http://192.168.1.42:11434/api/generate",
       "key": false,
       "json": true,
       "requestType": "POST",
