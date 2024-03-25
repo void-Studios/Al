@@ -44,7 +44,8 @@ APIKEYS={}
 for key in config_values['api_keys']:
   APIKEYS[key]=config_values['api_keys'][key]
 
-def fetchToAPI(query,apiurl,apikey=None):
+def fetchToAPI(query,API):
+
 
   headers = {
     'Content-Type':'application/json',
@@ -57,11 +58,13 @@ def fetchToAPI(query,apiurl,apikey=None):
     "format": "json"
   }
   
+  api_url=APISV2[API]["url"]
+  
 # 
 # response = requests.post('http://localhost:3000/v1/generate', headers=headers, json=json_data)
   
   
-  response=requests.request("POST",apiurl,headers=headers,json=json_data)
+  response=requests.request("POST",api_url,headers=headers,json=json_data)
   return response
   
 
@@ -69,17 +72,12 @@ def main():
   while True:
     API = inquirer.list_input("What api do you choose?",choices=APISV2)
 
-    print(API)
-    
-    if api_key is None or api_key == '':
-      api_key=None
-    
     query = input("How may I help you today?\n>>>")
     if query.lower()=='exit':
       break
     
     
-    responseData=fetchToAPI(query,api_url,api_key)
+    responseData=fetchToAPI(query,API)
     
     if responseData.status_code == 200:
         print('POST request was successful!')
