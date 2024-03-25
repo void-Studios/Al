@@ -40,6 +40,10 @@ for key in config_values['api_keys']:
   APIKEYS[key]=config_values['api_keys'][key]
 
 
+def post_to_API(query,API):
+  
+  pass
+
 def fetchToAPI(query,API):
   api_url = APIS[API]
   api_key = APIKEYS[API]
@@ -99,7 +103,12 @@ def main():
     API = inquirer.list_input("What api do you choose?",choices=APISV2)
 
     print(API)
+    
+    
     query = input("How may I help you today?\n>>>")
+    if query.lower()=='exit':
+      break
+    
     
     responseData=fetchToAPI(query,API)
     
