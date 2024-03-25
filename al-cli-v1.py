@@ -80,8 +80,14 @@ def main():
     responseData=fetchToAPI(query,API)
     
     if responseData.status_code == 200:
-        print('POST request was successful!')
-        print('Response:', responseData.json())
+        responseJson = responseData.json()
+        print('Response:', responseJson['response'])
+        
+        
+        
+        
+        
+        
     else:
         print('POST request failed with status code:', responseData.status_code)
     
