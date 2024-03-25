@@ -15,13 +15,14 @@ import datetime
 from tabulate import tabulate
 import configparser
 import os
-import json
+import re
 
 ini = os.path.join(os.path.dirname(__file__),"program_data","api.ini")
 jsonconfig = os.path.join(os.path.dirname(__file__),"program_data","api.json")
 config = configparser.ConfigParser()
 config.read(ini)
 config_values= {}
+session=False
 
 with open(jsonconfig) as f: 
   data= json.load(f)
@@ -54,8 +55,7 @@ def fetchToAPI(query,API):
   json_data= {
     "model": "mistral",
     "prompt": query,
-    "stream": False,
-    "format": "json"
+    "stream": False
   }
   
   api_url=APISV2[API]["url"]
@@ -72,16 +72,22 @@ def main():
   while True:
     API = inquirer.list_input("What api do you choose?",choices=APISV2)
 
-    query = input("How may I help you today?\n>>>")
-    if query.lower()=='exit':
-      break
-    
-    
-    responseData=fetchToAPI(query,API)
-    
-    if responseData.status_code == 200:
-        responseJson = responseData.json()
-        print('Response:', responseJson['response'])
+    session=True
+    while session:
+      query = input(">>>")
+      if query.lower()=='exit':
+        session=False
+        break
+      
+      
+      responseData=fetchToAPI(query,API)
+      
+      if responseData.status_code == 200:
+          responseJson = responseData.json()
+          responseMessage  = responseJson['response']
+          # responseMessage  = responseJson.get('response','')
+          
+          morse_code_alert.arduino_communications(responseMessage)
         
         
         
@@ -90,9 +96,6 @@ def main():
         
     else:
         print('POST request failed with status code:', responseData.status_code)
-    
-    print("Restarting...")
-
 
 if __name__ == "__main__":
     typer.run(main)
