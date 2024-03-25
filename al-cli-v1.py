@@ -89,10 +89,7 @@ def main():
           
           morse_code_alert.arduino_communications(responseMessage)
         
-        
-        
-        
-        
+       
         
     else:
         print('POST request failed with status code:', responseData.status_code)
