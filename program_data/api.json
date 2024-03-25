@@ -1,0 +1,26 @@
+{
+    "localhost": {
+      "url": "http://localhost:3000/v1/generate",
+      "key": false,
+      "json": false,
+      "headers": {}
+    },
+    "gemini": {
+      "url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=AIzaSyAtpgcaVEjuWxsNQks0Y7mMaep5m9zNiv0",
+      "key": "AIzaSyAtpgcaVEjuWxsNQks0Y7mMaep5m9zNiv0",
+      "json": true,
+      "headers": {}
+    },
+    "dogpics": {
+      "url": "https://dog.ceo/api/breeds/image/random",
+      "key": false,
+      "json": false,
+      "headers": {}
+    },
+    "pokeapi": {
+      "url": "https://pokeapi.co/api/v2/",
+      "key": false,
+      "json": true,
+      "headers": {}
+    }
+  }
