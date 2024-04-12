@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 #
 # Current script will only be requested to run by Al main hive
 # modules are tools not hives

@@ -3,8 +3,6 @@
 #AL MODULES IMPORT
 from modules import *
 
-
-
 import requests
 import json
 import typer

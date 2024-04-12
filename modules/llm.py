@@ -14,7 +14,12 @@ with open(jsonconfig) as f:
 llm_config=data["localhost"]
   
 
-def promtp(query):
-    
-    response ="Pong"
+def prompt(query):
+    api_url=llm_config["url"]
+    headers=llm_config["headers"]
+    json_data=llm_config["json"]
+    json_data["prompt"]=query
+    request_type=llm_config["requestType"]
+        
+    response=requests.request(request_type,api_url,headers=headers,json=json_data)
     return response

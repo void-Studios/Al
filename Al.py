@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/al/.Al/.venv/bin/python3
 import socket
 import os
 import sys
@@ -8,7 +8,8 @@ from datetime import datetime
 from modules import *
 
 def test():
-    folder_path = os.getcwd()
+    # folder_path = os.getcwd()
+    folder_path = "/home/al/.Al"
     folder_size.visualize_folders(folder_path) # type: ignore
     return
 
@@ -42,11 +43,16 @@ def hello():
 
 def help():
     global isStandby
+    
     print("The available modules as of right now are static. They are the following:")
     print("netscan\nclear\nhello")
     print("Help to get to this message.")
     print("|_")
     isStandby = modules(input("Which option do you choose?"))
+
+def ping():
+    llmResponse = llm.prompt("Help me here")
+    print(llmResponse)
 
 def clear_screen():
     os.system('clear')
@@ -77,8 +83,12 @@ def modules(module) -> bool:
         help()
     elif module =="test":
         test()
+    elif module == "logout":
+        sys.exit()
     else:
-        print("Module not yet set. Please address Kaichou-sama with this or try 'help' for available modules.")
+        ping(module)
+        print("\nModule not yet set. Please address Kaichou-sama with this or try 'help' for available modules.")
+        
         return False
     return True
 

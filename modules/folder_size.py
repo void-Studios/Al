@@ -13,6 +13,7 @@ def format_size(size_bytes):
     return "{:.2f} GB".format(size_bytes / (1024 ** 3))
 
 def visualize_folders(folder_path):
+    print(folder_path)
     print("Folder".ljust(30),"Size")
     print("-" * 40)
     for dir_name in os.listdir(folder_path):
@@ -23,5 +24,4 @@ def visualize_folders(folder_path):
 
 if __name__ == "__main__":
     folder_path = input("Enter the directory path to visualize: ")
-    print(folder_path)
     visualize_folders(folder_path)
