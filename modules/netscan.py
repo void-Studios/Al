@@ -1,7 +1,4 @@
 #!/usr/bin/env python3
-print("hello netscanning world")
-
-#!/usr/bin/env python3
 import re
 import requests
 import os
@@ -113,8 +110,4 @@ def update_database(devices, config):
     connection.commit()
     connection.close()
 
-# Example usage
-network_ip = "192.168.1.1/24"
-config = load_config()
-devices = scan_devices(network_ip)
-update_database(devices, config)
+

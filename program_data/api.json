@@ -2,16 +2,20 @@
     "gemini": {
     "url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=AIzaSyAtpgcaVEjuWxsNQks0Y7mMaep5m9zNiv0",
     "key": "AIzaSyAtpgcaVEjuWxsNQks0Y7mMaep5m9zNiv0",
-    "json": true,
+    "json": {},
     "requestType": "POST",
     "headers": {}
     },
     "localhost": {
-      "url": "http://192.168.1.42:11434/api/generate",
+      "url": "http://192.168.196.42:11434/api/generate",
       "key": false,
-      "json": true,
       "requestType": "POST",
-      "headers": {"Content-Type":"application/json"}
+      "headers": {"Content-Type":"application/json"},
+      "json": {
+        "model": "mistral",
+        "prompt": "query",
+        "stream": false
+      }
     },
     "dogpics": {
       "url": "https://dog.ceo/api/breeds/image/random",
@@ -30,6 +34,6 @@
       "headers": {},
       "is_random": true,
       "returns_list":true
-
-    }
+    },
+    "exit":{}
   }
