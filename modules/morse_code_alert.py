@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
-#Required updates:
-# Arugment to enable modularity
+#
 # Current script will only be requested to run by Al main hive
 # modules are tools not hives
 #
@@ -10,7 +9,7 @@ import serial
 import time
 import re
 
-arduino = serial.Serial(port='/dev/ttyACM1',baudrate=115200, timeout=1)
+arduino = serial.Serial(port='/dev/ttyACM0',baudrate=115200)
 
 def arduino_communications(message):
         message = re.sub(r'\n{3,}','\n\n',message)
@@ -23,5 +22,6 @@ def arduino_communications(message):
             data = arduino.readline().decode().strip()
             if '/420' in data:
                 break
-            print(data)
-            
+            data = data.replace("::","")
+            print(data,end='',flush=True)
+        print("")

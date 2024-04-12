@@ -46,32 +46,34 @@ for key in config_values['api_keys']:
   APIKEYS[key]=config_values['api_keys'][key]
 
 def fetchToAPI(query,API):
+  
 
-
-  headers = {
-    'Content-Type':'application/json',
-    }
+  # headers = {
+  #   'Content-Type':'application/json',
+  #   }
   
-  json_data= {
-    "model": "mistral",
-    "prompt": query,
-    "stream": False
-  }
+  # json_data= {
+  #   "model": "mistral",
+  #   "prompt": query,
+  #   "stream": False
+  # }
   
-  api_url=APISV2[API]["url"]
+  api_url=API["url"]
+  headers=API["headers"]
+  json_data=API["json"]
+  json_data["prompt"]=query
+  request_type=API["requestType"]
   
-# 
-# response = requests.post('http://localhost:3000/v1/generate', headers=headers, json=json_data)
-  
-  
-  response=requests.request("POST",api_url,headers=headers,json=json_data)
+  response=requests.request(request_type,api_url,headers=headers,json=json_data)
   return response
   
 
 def main():
   while True:
     API = inquirer.list_input("What api do you choose?",choices=APISV2)
-
+    
+    if API=="exit":
+      break
     session=True
     while session:
       query = input(">>>")
@@ -80,7 +82,7 @@ def main():
         break
       
       
-      responseData=fetchToAPI(query,API)
+      responseData=fetchToAPI(query,APISV2[API])
       
       if responseData.status_code == 200:
           responseJson = responseData.json()

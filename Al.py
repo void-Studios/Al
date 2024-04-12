@@ -5,9 +5,28 @@ import sys
 import subprocess
 from datetime import datetime
 
+#LLM Setup
+jsonconfig = os.path.join(os.path.dirname(__file__),"program_data","api.json")
+
+with open(jsonconfig) as f: 
+  data= json.load(f)
+
+llm_config=data["localhost"]
+  
+
+
 #IMPORTING MODULES
 from modules import netscan
+
+
+
+
+
+
+
+
 os.system('clear')
+
 # Global variables
 user = os.getenv('USER')
 ssh_client = os.getenv('SSH_CLIENT')
@@ -51,7 +70,6 @@ def hello():
 
 def help():
     global isStandby
-    print("|_")
     print("The available modules as of right now are static. They are the following:")
     print("netscan\nclear\nhello")
     print("Help to get to this message.")
@@ -71,7 +89,6 @@ def idle():
 
    
 def modules(module) -> bool:
-    print("|_")
     module= module.lower()
     if module=='n' or module=='no' or module=='exit':
             print("I appreciated our interaction today. I'll be here if you need me.")
@@ -90,6 +107,8 @@ def modules(module) -> bool:
         print("Module not yet set. Please address Kaichou-sama with this or try 'help' for available modules.")
         return False
     return True
+
+
 
 if __name__ == "__main__":
     hello()
