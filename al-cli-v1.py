@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 #AL MODULES IMPORT
-from modules import morse_code_alert
+from modules import *
 
 
 
@@ -80,16 +80,15 @@ def main():
       if query.lower()=='exit':
         session=False
         break
-      
-      
-      responseData=fetchToAPI(query,APISV2[API])
-      
-      if responseData.status_code == 200:
-          responseJson = responseData.json()
-          responseMessage  = responseJson['response']
-          # responseMessage  = responseJson.get('response','')
-          
-          morse_code_alert.arduino_communications(responseMessage)
+      elif query.lower()=='test':
+        responseMessage='Hello World'
+      else:
+        responseData=fetchToAPI(query,APISV2[API])
+        if responseData.status_code == 200:
+            responseJson = responseData.json()
+            responseMessage  = responseJson['response']
+
+      morse_code_alert.arduino_communications(responseMessage)
         
        
         
