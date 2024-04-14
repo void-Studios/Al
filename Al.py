@@ -20,7 +20,7 @@ os.system('clear')
 # Global variables
 system_info = os.uname()
 date_current = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-modules_directory = platform.path.join(platform.path.dirname(__file__),"modules")
+modules_directory = os.path.join(os.path.dirname(__file__),"modules")
 isStandby=True
 
 def script_setup(language,script_name):
