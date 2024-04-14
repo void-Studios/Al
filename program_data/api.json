@@ -1,10 +1,20 @@
 {
     "gemini": {
-    "url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=AIzaSyAtpgcaVEjuWxsNQks0Y7mMaep5m9zNiv0",
-    "key": "AIzaSyAtpgcaVEjuWxsNQks0Y7mMaep5m9zNiv0",
-    "json": {},
+    "url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=<key>",
+    "key": "KEY",
     "requestType": "POST",
-    "headers": {}
+    "headers": {},
+    "json": {
+      "contents": [
+        {
+          "parts": [
+            {
+              "text": "query"
+            }
+          ]
+        }
+      ]
+    }
     },
     "localhost": {
       "url": "http://192.168.196.42:11434/api/generate",

@@ -1,9 +1,10 @@
 #!/home/al/.Al/.venv/bin/python3
 import socket
-import os
+import platform
 import sys
 import subprocess
 from datetime import datetime
+import os
 
 from modules import *
 
@@ -19,9 +20,41 @@ os.system('clear')
 # Global variables
 system_info = os.uname()
 date_current = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-modules_directory = os.path.join(os.path.dirname(__file__),"modules")
+modules_directory = platform.path.join(platform.path.dirname(__file__),"modules")
 isStandby=True
 
+def script_setup(language,script_name):
+    script_path = os.path.join(modules_directory,script_name)
+    if os.path.isfile(script_path):
+        subprocess.run([language,script_path])
+    else:
+        print(f"Error: {script_path} not found.")
+
+def netscan():
+    print("Performing network scan...")
+    script_setup("python3","lan_scan/scan.py")
+    
+def hello():
+    global isStandby
+    subprocess.run(["neofetch"])
+    ssh_info.getUser()
+    print(f'You have successfully authenticated into the {system_info.nodename} network. Congratulations!')
+    print(f"The current time where you are located is time: {date_current}")
+    isStandby=modules(input("I'm still learning, but let me know if there is anything I can do to assist you.\n>>"))
+    
+
+def help():
+    global isStandby
+    
+    print("The available modules as of right now are static. They are the following:")
+    print("netscan\nclear\nhello")
+    print("Help to get to this message.")
+    print("|_")
+    isStandby = modules(input("Which option do you choose?"))
+
+def ping():
+    llmResponse = llm.prompt("Help me here")
+    print(llmResponse)
 
 def clear_screen():
     os.system('clear')
@@ -53,7 +86,7 @@ def modules(module) -> bool:
         sys.exit()
     else:
         ping(module)
-        print("\nModule not yet set. Please address Kaichou-sama with this or try 'help' for available modules.")
+        print("\nIf there is anything else, please address Kaichou-sama with this or try 'help' for available modules.")
         return False
     return True
 
