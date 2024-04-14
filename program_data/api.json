@@ -1,7 +1,7 @@
 {
     "gemini": {
-    "url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=AIzaSyAtpgcaVEjuWxsNQks0Y7mMaep5m9zNiv0",
-    "key": "AIzaSyAtpgcaVEjuWxsNQks0Y7mMaep5m9zNiv0",
+    "url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=<key>",
+    "key": "KEY",
     "json": {},
     "requestType": "POST",
     "headers": {}
