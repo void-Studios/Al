@@ -114,14 +114,12 @@ def hello():
 
 def help():
     global isStandby
-    
     print("The available modules as of right now are static. They are the following:")
-    
     # Print list of modules
     print("netscan\nclear\nhello")
     
     print("Help to get to this message.")
-    print("|_")
+    
     isStandby = modules(input("Which option do you choose?\n>>"))
 
 def idle():

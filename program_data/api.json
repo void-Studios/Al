@@ -1,6 +1,6 @@
 {
     "gemini": {
-    "url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=<key>",
+    "url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=<KEY>",
     "key": "KEY",
     "requestType": "POST",
     "headers": {},

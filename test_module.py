@@ -1,7 +1,9 @@
-import test
+#!/home/al/.Al/.venv/bin/python3
+from modules import llm
+import json
 
-# Test the function
-url = "http://192.168.196.42:11434"
-test.check_url(url)
-api = test.get_API()
-print(f"API = {api}")
+response = llm.prompt("Hello world")
+response_data  = response.json()
+response_text = response_data['candidates'][0]['content']['parts'][0]['text']
+
+print(response_text)

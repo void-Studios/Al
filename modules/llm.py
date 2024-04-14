@@ -1,3 +1,6 @@
+from dotenv import load_dotenv
+load_dotenv()
+
 #LLM API
 import requests
 import json
@@ -38,20 +41,25 @@ def prompt(query):
       json_data["prompt"]=query
     else:
       api_key = os.environ.get("GEMINI_API_KEY")
-    if not api_key:
-      raise ValueError("GEMINI_API_KEY not set")
-    api_url.replace("<key>",api_key)
+      if not api_key:
+        raise ValueError(f"{api_name.upper()}_API_KEY not set")
+    api_url=api_url.replace("<KEY>",api_key)
     json_data["contents"][0]["parts"][0]["text"] = query
 
     request_type=llm_config["requestType"]    
+    
     response=requests.request(request_type,api_url,headers=headers,json=json_data)
-    return response
+    response_data  = response.json()
+    
+
+    if api_name== "localhost":
+      response_text = response_data['response']
+    elif api_name == 'gemini':
+      response_text = response_data['candidates'][0]['content']['parts'][0]['text']  
+    
+    return response_text
   
   
 if __name__ == "__main__":
-    prompt("Hello World")
+    print(prompt("Hello World"))
     pass
-    
-
-
-

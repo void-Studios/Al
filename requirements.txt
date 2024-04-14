@@ -10,6 +10,7 @@ inquirer==3.2.3
 mysql-connector==2.2.9
 pyfiglet==1.0.2
 pyserial==3.5
+python-dotenv==1.0.1
 readchar==4.0.5
 requests==2.31.0
 runs==1.2.2
