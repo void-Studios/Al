@@ -13,12 +13,10 @@ def getIPDetail():
 
 def getUser():
     if ssh_client is None:
-        print(f"Hello, {user}! My name is Al. Pleased to meet you.")
+        return user
     else:
         client_ip = ssh_client.split()[0]
         client_port = ssh_client.split()[-1]
         client_string = f"[ {client_ip} : {client_port} ]"
-        
-        print(f"Hey {client_string}! My name is Al. Pleased to meet you.")
-    
+        return client_string
 

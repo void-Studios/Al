@@ -12,7 +12,7 @@
       "requestType": "POST",
       "headers": {"Content-Type":"application/json"},
       "json": {
-        "model": "mistral",
+        "model": "tinyllama",
         "prompt": "query",
         "stream": false
       }

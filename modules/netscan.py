@@ -110,3 +110,6 @@ def update_database(devices, config):
     connection.close()
 
 
+def start():
+    mysql_config = load_config()
+    

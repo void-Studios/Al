@@ -21,5 +21,12 @@ def prompt(query):
     json_data["prompt"]=query
     request_type=llm_config["requestType"]
         
-    response=requests.request(request_type,api_url,headers=headers,json=json_data)
-    return response
+    response_data=requests.request(request_type,api_url,headers=headers,json=json_data)
+    if response_data.status_code==200:
+      response_json = response_data.json()
+    return response_json['response']
+  
+  
+if __name__ == "__main__":
+    prompt("Hello World")
+    pass
