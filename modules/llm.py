@@ -34,33 +34,24 @@ def prompt(query):
     api_url=llm_config["url"]
     headers=llm_config["headers"]
     json_data=llm_config["json"]
-<<<<<<< HEAD
-    json_data["prompt"]=query
-    request_type=llm_config["requestType"]
-        
-    response_data=requests.request(request_type,api_url,headers=headers,json=json_data)
-    if response_data.status_code==200:
-      response_json = response_data.json()
-    return response_json['response']
+    if api_name == "localhost":
+      json_data["prompt"]=query
+    else:
+      api_key = os.environ.get("GEMINI_API_KEY")
+    if not api_key:
+      raise ValueError("GEMINI_API_KEY not set")
+    api_url.replace("<key>",api_key)
+    json_data["contents"][0]["parts"][0]["text"] = query
+
+    request_type=llm_config["requestType"]    
+    response=requests.request(request_type,api_url,headers=headers,json=json_data)
+    return response
   
   
 if __name__ == "__main__":
     prompt("Hello World")
     pass
-=======
     
-    if api_name == "localhost":
-      json_data["prompt"]=query
-    else:
-      api_key = os.environ.get("GEMINI_API_KEY")
-      if not api_key:
-        raise ValueError("GEMINI_API_KEY not set")
-      api_url.replace("<key>",api_key)
-      json_data["contents"][0]["parts"][0]["text"] = query
-    
-    request_type=llm_config["requestType"]    
-    response=requests.request(request_type,api_url,headers=headers,json=json_data)
-    return response
 
 
->>>>>>> windowsDev
+
