@@ -22,16 +22,9 @@ date_current = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 modules_directory = platform.path.join(platform.path.dirname(__file__),"modules")
 isStandby=True
 
-def script_setup(language,script_name):
-    script_path = platform.path.join(modules_directory,script_name)
-    if platform.path.isfile(script_path):
-        subprocess.run([language,script_path])
-    else:
-        print(f"Error: {script_path} not found.")
-
 def netscan():
     print("Performing network scan...")
-    script_setup("python3","lan_scan/scan.py")
+
     
 def hello():
     global isStandby
@@ -88,7 +81,7 @@ def modules(module) -> bool:
         sys.exit()
     else:
         ping(module)
-        print("\nModule not yet set. Please address Kaichou-sama with this or try 'help' for available modules.")
+        print("\nIf there is anything else, please address Kaichou-sama with this or try 'help' for available modules.")
         
         return False
     return True
