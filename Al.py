@@ -1,10 +1,13 @@
 #!/home/al/.Al/.venv/bin/python3
+import os
+os.system('clear')
+
 import socket
 import platform
 import sys
 import subprocess
 from datetime import datetime
-import os
+
 
 from modules import *
 
@@ -14,26 +17,15 @@ def test():
     folder_size.visualize_folders(folder_path) # type: ignore
     return
 
-os.system('clear')
-
-
 # Global variables
 system_info = os.uname()
 date_current = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 modules_directory = os.path.join(os.path.dirname(__file__),"modules")
 isStandby=True
 
-def script_setup(language,script_name):
-    script_path = os.path.join(modules_directory,script_name)
-    if os.path.isfile(script_path):
-        subprocess.run([language,script_path])
-    else:
-        print(f"Error: {script_path} not found.")
-
 def netscan():
     print("Performing network scan...")
-    script_setup("python3","lan_scan/scan.py")
-    
+        
 def hello():
     global isStandby
     subprocess.run(["neofetch"])
