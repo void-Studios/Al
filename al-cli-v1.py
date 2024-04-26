@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/al/.Al/.venv/bin/python3
 
 #AL MODULES IMPORT
 from modules import *
