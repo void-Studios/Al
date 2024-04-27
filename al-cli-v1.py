@@ -39,9 +39,6 @@ APIS={}
 for api in config_values['api_url']:
   APIS[api]=config_values['api_url'][api]
 
-APIKEYS={}
-for key in config_values['api_keys']:
-  APIKEYS[key]=config_values['api_keys'][key]
 
 def fetchToAPI(query,API):
   
@@ -67,6 +64,7 @@ def fetchToAPI(query,API):
   
 
 def main():
+  responseMessage= ""
   while True:
     API = inquirer.list_input("What api do you choose?",choices=APISV2)
     
