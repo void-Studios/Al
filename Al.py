@@ -44,10 +44,6 @@ def help():
     print("|_")
     isStandby = modules(input("Which option do you choose?"))
 
-def ping():
-    llmResponse = llm.prompt("Help me here")
-    print(llmResponse)
-
 def clear_screen():
     os.system('clear')
 
@@ -56,6 +52,12 @@ def ping(prompt):
     parsed_prompt = prompt.replace('\n','\\n') 
     llm_response = llm.prompt(parsed_prompt)
     print(llm_response)
+
+def morse():
+    print("Enter the message you wish to send.")
+    message = input(">>")
+    morse_code_alert.arduino_communications(message) # type: ignore
+    
 
 def modules(module) -> bool:
     module= module.lower()
@@ -76,6 +78,8 @@ def modules(module) -> bool:
         test()
     elif module == "logout":
         sys.exit()
+    elif module == "morse":
+        morse()
     else:
         ping(module)
         print("\nIf there is anything else, please address Kaichou-sama with this or try 'help' for available modules.")

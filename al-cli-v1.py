@@ -84,7 +84,7 @@ def main():
             responseJson = responseData.json()
             responseMessage  = responseJson['response']
 
-      morse_code_alert.arduino_communications(responseMessage)
+      morse_code_alert.arduino_communications(responseMessage) # type: ignore
         
        
         
