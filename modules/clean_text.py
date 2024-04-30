@@ -3,10 +3,12 @@ import ast
 import os
 
 # Define the input and output file paths
-input_file_path = os.path.join(os.getcwd(), 'program_data/input/clean_text.txt')
+input_file_path = os.path.join(os.getcwd(), 'program_data','input','clean_text.txt')
 output_file_path = os.path.join(os.getcwd(), 'program_data/output/clean_text.txt')
 
 def extract_operacion_id(file_path):
+    if not os.path.exists(file_path):
+        raise FileNotFoundError(f"The file path: {file_path} does not exist")
     with open(file_path, 'r') as file:
         content = file.read()
 
@@ -27,9 +29,12 @@ def extract_operacion_id(file_path):
 
     return cleaned_content
 
-# Read from the input file
-cleaned_content = extract_operacion_id(input_file_path)
 
-# Write to the output file
-with open(output_file_path, 'w') as file:
-    file.write(cleaned_content)
+if __name__ == "__main__":
+    
+    # Read from the input file
+    cleaned_content = extract_operacion_id(input_file_path)
+
+    # Write to the output file
+    with open(output_file_path, 'w') as file:
+        file.write(cleaned_content)
