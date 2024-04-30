@@ -93,7 +93,7 @@ def hello():
     global isStandby
     subprocess.run(["neofetch"])
     user_info = ssh_info.getUser()
-    ping(f"""
+    ping(f"""Respond in first person,
     Your name is Al, and you are residing within the Kurai Tachi server called KuraiOrg,
     Provide a server welcome message, and make sure to use information below as it has been curated for the greeting:
     system information: {system_info.nodename}

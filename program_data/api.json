@@ -22,7 +22,7 @@
       "requestType": "POST",
       "headers": {"Content-Type":"application/json"},
       "json": {
-        "model": "tinyllama",
+        "model": "llama3",
         "prompt": "query",
         "stream": false
       }

@@ -30,7 +30,7 @@ check_url("http://192.168.196.42:11434")
 
 
 def prompt(query):
-    
+    api_key = ""
     llm_config=data[api_name]
     
     
@@ -43,8 +43,8 @@ def prompt(query):
       api_key = os.environ.get("GEMINI_API_KEY")
       if not api_key:
         raise ValueError(f"{api_name.upper()}_API_KEY not set")
-    api_url=api_url.replace("<KEY>",api_key)
-    json_data["contents"][0]["parts"][0]["text"] = query
+      api_url=api_url.replace("<KEY>",api_key)
+      json_data["contents"][0]["parts"][0]["text"] = query
 
     request_type=llm_config["requestType"]    
     
