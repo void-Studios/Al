@@ -22,7 +22,7 @@
       "requestType": "POST",
       "headers": {"Content-Type":"application/json"},
       "json": {
-        "model": "llama3",
+        "model": "codellama",
         "prompt": "query",
         "stream": false
       }
