@@ -7,8 +7,12 @@ import serial
 import time
 import re
 
-arduino = serial.Serial(port='/dev/ttyACM0',baudrate=115200)
+serialPort = '/dev/ttyACM0'
 
+try:
+    arduino = serial.Serial(port=serialPort,baudrate=115200)
+except:
+    print("Unable to open port" + serialPort)
 def arduino_communications(message):
         message = re.sub(r'\n{3,}','\n\n',message)
         print(message)
